@@ -1,0 +1,31 @@
+#importing re and str libraries that we are going to use in this code
+import re
+import ast
+print('Enter 1 to do implementation of lexical analyzer or Enter 2 to do implementation of syntax tree')
+choice = int(input("Enter your choice: "))
+#Function of lexical analyzer
+def lexical_analysis(expression):
+  # Creating regular expression for matching tokens
+  token = r"""(?x)          # Set flag to allow verbose regexps
+                           [\d.]+|     # matching digits pattern
+                           [-+*/()]|   # Matching operators and pattern
+                           [a-zA-Z]+   # Matchinng variable names pattern
+                        """
+  # finding the tokens in the expression by using re.findall
+  tokens = re.findall(token, expression)
+  return tokens
+if choice== 1:
+    print('To do implementation of lexical analyzer. Enter your expression: ')
+    #Taking expression from the user
+    exp=input()
+    #using lexical analyzer function
+    print(lexical_analysis(exp)) 
+elif choice== 2:
+    print('To do implementation of syntax tree. Enter your expression: ')
+    #taking the input from the user
+    exp=input()
+    syntax_tree = ast.parse(exp)
+    #Printing the ast
+    print(ast.daump(syntax_tree))
+else:
+    print('Enter the valid choice')
